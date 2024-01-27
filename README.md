@@ -13,4 +13,5 @@ Easy to include other collection classes, because uses Strategy design pattern.
 
 ## Tools
 Visual Studio 2022
+
 .Net 7.0
