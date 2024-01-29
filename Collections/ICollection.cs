@@ -2,6 +2,6 @@
 {
     internal interface ICollection
     {
-        void TestPerformance(int[] array, int indexNumberWanted);
+        (long, string) TestPerformance(int[] array, int indexNumberWanted);
     }
 }

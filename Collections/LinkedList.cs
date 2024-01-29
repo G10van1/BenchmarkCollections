@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace BenchmarkCollections.Collections
 {
@@ -11,9 +12,9 @@ namespace BenchmarkCollections.Collections
 
         protected override void Create(int[] array)
         {
-            Console.WriteLine("\nLinkedList");
             Stopwatch stopwatch = Stopwatch.StartNew();
             linkedList = new LinkedList<int>(array);
+            stopwatch.Stop();
             Log("Create", stopwatch.ElapsedMilliseconds);
         }
 

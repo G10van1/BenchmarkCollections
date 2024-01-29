@@ -1,5 +1,6 @@
 ﻿using BenchmarkCollections.Collections;
 using System.Diagnostics;
+using System.Text;
 
 namespace BenchmarkCollections
 {
@@ -15,6 +16,7 @@ namespace BenchmarkCollections
             int[] array = new ArraySimple(SIZE, MAX_VALUE, out int indexNumber).Array;
 
             // Measure time to find the number using different collections
+            // Add more classes to other collections if necessary
             List<ICollection> collections = new List<ICollection>
             {
                 new ArrayList(),
@@ -25,11 +27,36 @@ namespace BenchmarkCollections
                 new SortedDictionary()
             };
 
-            // Add more classes to other collections if necessary
+            // Create array tasks
+            Task<(long, string)>[] tasks = new Task<(long, string)>[collections.Count];
+
+            // Launch tasks in parallel execution
+            int i = 0;
             foreach (var collection in collections)
-            {
-                collection.TestPerformance(array, indexNumber);
+                tasks[i++] = Task.Run(() => collection.TestPerformance(array, indexNumber));
+
+            // Wait for all tasks to complete
+            Task.WaitAll(tasks);
+
+            SortedDictionary<long, string> times = new SortedDictionary<long, string>();
+
+            for (i = 0; i < collections.Count; i++)
+            {                
+                int count = 0;
+                while (true)
+                {
+                    try
+                    {
+                        times.Add(tasks[i].Result.Item1 + count++, tasks[i].Result.Item2);
+                        break;
+                    }
+                    catch (ArgumentException ex) { continue; }
+                    catch (Exception ex) { Console.WriteLine(ex.Message); }
+                }
             }
+
+            foreach (var time in times)
+                Console.WriteLine(time.Value);
         }
     }    
 }

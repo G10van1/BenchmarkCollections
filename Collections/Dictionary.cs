@@ -11,12 +11,12 @@ namespace BenchmarkCollections.Collections
 
         protected override void Create(int[] array)
         {
-            Console.WriteLine("\nDictionary");
             Stopwatch stopwatch = Stopwatch.StartNew();
             dictionary = new Dictionary<int, int>();
             int count = 0;
             foreach (var item in array)
                 dictionary[count++] = item;
+            stopwatch.Stop();
             Log("Create", stopwatch.ElapsedMilliseconds);
         }
 

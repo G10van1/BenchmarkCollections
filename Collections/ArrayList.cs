@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace BenchmarkCollections.Collections
 {
@@ -10,7 +11,6 @@ namespace BenchmarkCollections.Collections
 
         protected override void Create(int[] array)
         {
-            Console.WriteLine("ArrayList");
             Stopwatch stopwatch = Stopwatch.StartNew();
             arrayList = new System.Collections.ArrayList(array);
             stopwatch.Stop();

@@ -10,7 +10,6 @@ namespace BenchmarkCollections.Collections
 
         protected override void Create(int[] array)
         {
-            Console.WriteLine("\nList");
             Stopwatch stopwatch = Stopwatch.StartNew();
             list = new System.Collections.Generic.List<int>(array);
             stopwatch.Stop();

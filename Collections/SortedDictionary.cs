@@ -11,7 +11,6 @@ namespace BenchmarkCollections.Collections
 
         protected override void Create(int[] array)
         {
-            Console.WriteLine("\nSortedDictionary");
             Stopwatch stopwatch = Stopwatch.StartNew();
             sortedDictionary = new SortedDictionary<int, int>();
             int count = 0;

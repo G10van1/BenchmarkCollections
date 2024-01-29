@@ -11,7 +11,6 @@ namespace BenchmarkCollections.Collections
 
         protected override void Create(int[] array)
         {
-            Console.WriteLine("\nSortedList");
             Stopwatch stopwatch = Stopwatch.StartNew();
             sortedList = new SortedList<int, int>();
             int count = 0;            
