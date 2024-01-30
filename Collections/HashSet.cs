@@ -2,19 +2,16 @@
 
 namespace BenchmarkCollections.Collections
 {
-    internal class SortedList : Collection
+    internal class HashSet : Collection
     {
-        private System.Collections.Generic.SortedList<int, int> sortedList;
+        private System.Collections.Generic.HashSet<int> hashset;
 
-        protected override bool useIndex() { return true; }
-        private int valueWanted = 0;
+        protected override bool useIndex() { return false; }
 
         protected override void Create(int[] array)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
-            sortedList = new SortedList<int, int>();
-            for (int i = 0; i < array.Length; i++)
-                sortedList.Add(i, array[i]);
+            hashset = new HashSet<int>(array);
             stopwatch.Stop();
             Log("Create", stopwatch.ElapsedMilliseconds);
         }
@@ -23,9 +20,8 @@ namespace BenchmarkCollections.Collections
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             string notFound = "";
-            if (!sortedList.TryGetValue(numberWanted, out int valueFound))
+            if (hashset.FirstOrDefault(numberWanted) == null)
                 notFound = " | Number not found";
-            valueWanted = valueFound;
             stopwatch.Stop();
             Log("Search", stopwatch.ElapsedMilliseconds);
             Console.Write(notFound);
@@ -34,7 +30,7 @@ namespace BenchmarkCollections.Collections
         protected override void Remove(int numberWanted)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
-            sortedList.Remove(numberWanted);
+            hashset.Remove(numberWanted);
             stopwatch.Stop();
             Log("Remove", stopwatch.ElapsedMilliseconds);
         }
@@ -42,7 +38,7 @@ namespace BenchmarkCollections.Collections
         protected override void Insert(int numberWanted)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
-            sortedList.Add(numberWanted, valueWanted);
+            hashset.Add(numberWanted);
             stopwatch.Stop();
             Log("Insert", stopwatch.ElapsedMilliseconds);
         }

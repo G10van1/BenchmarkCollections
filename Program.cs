@@ -24,7 +24,8 @@ namespace BenchmarkCollections
                 new LinkedList(),
                 new Dictionary(),
                 new SortedList(),
-                new SortedDictionary()
+                new SortedDictionary(),
+                new HashSet(),
             };
 
             // Create array tasks

@@ -15,7 +15,6 @@ namespace BenchmarkCollections.Collections
 
         (long, string) ICollection.TestPerformance(int[] array, int indexNumberWanted)
         {
-            //log.Append("\n");
             log.AppendLine(this.GetType().ToString().Split('.')[2]);            
             int numberWanted = useIndex() ? indexNumberWanted : array[indexNumberWanted];
             Stopwatch stopwatch = Stopwatch.StartNew();

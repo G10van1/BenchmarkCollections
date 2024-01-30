@@ -12,7 +12,6 @@ namespace BenchmarkCollections.Collections
             Stopwatch stopwatch = Stopwatch.StartNew();
             array = new int[size];
             Random random = new Random();
-
             for (int i = 0; i < size; i++)
             {
                 array[i] = random.Next(maxValue + 1);
@@ -21,7 +20,6 @@ namespace BenchmarkCollections.Collections
 
             // Number to search
             index = random.Next(size + 1);
-
             Console.WriteLine($"Number to search:\n    Index: {index}\n    Value: {array[index]}\n");
 
             Console.WriteLine("Array");
@@ -34,7 +32,6 @@ namespace BenchmarkCollections.Collections
             Stopwatch stopwatch = Stopwatch.StartNew();
             int index = System.Array.IndexOf(array, numberWanted);
             stopwatch.Stop();
-
             Console.WriteLine($"     Search:{stopwatch.ElapsedMilliseconds.ToString().PadLeft(11, ' ')} ms\n");
         }
     }

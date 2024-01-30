@@ -13,9 +13,8 @@ namespace BenchmarkCollections.Collections
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             dictionary = new Dictionary<int, int>();
-            int count = 0;
-            foreach (var item in array)
-                dictionary[count++] = item;
+            for (int i = 0; i < array.Length; i++)
+                dictionary.Add(i, array[i]);
             stopwatch.Stop();
             Log("Create", stopwatch.ElapsedMilliseconds);
         }
