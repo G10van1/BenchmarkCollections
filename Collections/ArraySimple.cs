@@ -19,7 +19,7 @@ namespace BenchmarkCollections.Collections
             stopwatch.Stop();
 
             // Number to search
-            index = random.Next(size + 1);
+            index = random.Next(size);
             Console.WriteLine($"Number to search:\n    Index: {index}\n    Value: {array[index]}\n");
 
             Console.WriteLine("Array");
