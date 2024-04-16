@@ -8,7 +8,8 @@ Measure time and performance using different collections as:
  - LinkedList;
  - Dictionary;
  - SortedList;
- - SortedDictionary.
+ - SortedDictionary;
+ - HashSet.
 
 Easy to include other collection classes as it uses the Strategy design pattern.
 
